@@ -1,0 +1,31 @@
+/* navbar styles */
+.banner-text{
+	font-weight: 700;
+	color: cornflowerblue!important;
+	line-height: 70px;
+}
+.banner-paragraph {
+	width: 25rem;
+}
+.language-text {
+	line-height: 70px;
+}
+.custom-text-registration {
+
+}
+.registration-banner {
+	background-image: url('../../images/registration/undraw_access_account_re_8spm.svg');
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 1000px;
+}
+.input-field-info {
+	margin-left: 7rem;
+}
+.input-field-registration {
+	margin-top: 10rem;
+}
+.input-field-border-radius {
+	border-radius: 10px;
+}
