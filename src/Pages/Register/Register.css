@@ -1,4 +1,5 @@
 /* navbar styles */
+
 .banner-text{
 	font-weight: 700;
 	color: cornflowerblue!important;
@@ -6,19 +7,16 @@
 }
 .banner-paragraph {
 	width: 25rem;
-}
-.language-text {
-	line-height: 70px;
-}
-.custom-text-registration {
 
 }
+
+
 .registration-banner {
 	background-image: url('../../images/registration/undraw_access_account_re_8spm.svg');
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	height: 1000px;
+	height: 700px;
 }
 .input-field-info {
 	margin-left: 7rem;
@@ -28,4 +26,14 @@
 }
 .input-field-border-radius {
 	border-radius: 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.loader{
+	margin-left: 100px;
+	margin-bottom: 10px;
+
 }
