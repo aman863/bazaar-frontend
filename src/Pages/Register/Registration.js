@@ -79,7 +79,7 @@ const Register = () => {
 										<div class="me-auto p-2 bd-highlight"><h1 className='fw-bold register-name'>Registration</h1>
 											<form className="mt-3" onSubmit={formik.handleSubmit}>
 												<div className="form-group">
-													<label htmlFor="fullname" className="form-label-reg">Full Name</label>
+													<label htmlFor="fullname" className="form-label">Full Name</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -94,7 +94,7 @@ const Register = () => {
 														</Alert>
 														: null}
 
-													<label htmlFor="brandname" className="form-label-rg">Brand Name</label>
+													<label htmlFor="brandname" className="form-label">Brand Name</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -107,7 +107,7 @@ const Register = () => {
 															{formik.errors.brandname}
 														</Alert>
 														: null}
-													<label htmlFor="Personalprofilelink" className="form-label-reg">Personal profile link</label>
+													<label htmlFor="Personalprofilelink" className="form-label">Personal profile link</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -121,7 +121,7 @@ const Register = () => {
 														</Alert>
 														: null}
 
-													<label htmlFor="Brandpagelink" className="form-label-reg">Brand page link</label>
+													<label htmlFor="Brandpagelink" className="form-label">Brand page link</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -134,7 +134,7 @@ const Register = () => {
 															{formik.errors.Brandpagelink}
 														</Alert>
 														: null}
-													<label htmlFor="email" className="form-label-reg">Email</label>
+													<label htmlFor="email" className="form-label">Email</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -147,7 +147,7 @@ const Register = () => {
 															{formik.errors.email}
 														</Alert>
 														: null}
-													<label htmlFor="Shortdescription" className="form-label-reg">Short description</label>
+													<label htmlFor="Shortdescription" className="form-label">Short description</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -163,7 +163,7 @@ const Register = () => {
 												</div>
 
 												<div className="form-group-right">
-													<label htmlFor="Mobilenumber" className="form-label-reg">Mobile number</label>
+													<label htmlFor="Mobilenumber" className="form-label">Mobile number</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -176,7 +176,7 @@ const Register = () => {
 															{formik.errors.Mobilenumber}
 														</Alert>
 														: null}
-													<label htmlFor="WhatsappNumber" className="form-label-reg">Whatsapp Number</label>
+													<label htmlFor="WhatsappNumber" className="form-label">Whatsapp Number</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -189,7 +189,7 @@ const Register = () => {
 															{formik.errors.WhatsappNumber}
 														</Alert>
 														: null}
-													<label htmlFor="Address" className="form-label-reg">Address</label>
+													<label htmlFor="Address" className="form-label">Address</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -202,7 +202,7 @@ const Register = () => {
 															{formik.errors.Address}
 														</Alert>
 														: null}
-													<label htmlFor="GSTNumber" className="form-label-reg">GST Number</label>
+													<label htmlFor="GSTNumber" className="form-label">GST Number</label>
 													<input
 														type="text"
 														className="form-control-reg"
@@ -216,7 +216,7 @@ const Register = () => {
 														</Alert>
 														: null}
 
-													<label htmlFor="ProductCategory" className="form-label-reg">Product Category</label>
+													<label htmlFor="ProductCategory" className="form-label">Product Category</label>
 													<select name="ProductCategory" className="select"
 													name="ProductCategory"
 													placeholder=" eg. junior developer"
@@ -230,16 +230,14 @@ const Register = () => {
 												</div>
 												<Button
 													endIcon={<ArrowForwardIcon />}
-													className="button-reg"
+													className="button"
 													variant="contained"
 													type="submit"
 													>
 													Next Step
 												</Button >
 											</form>
-											<div>
-												Already have an account .<a href="google.com">Sign In</a>
-											</div>
+											
 										</div>
 
 									</div>
