@@ -1,9 +1,13 @@
 /* navbar styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300&display=swap');
 
 .banner-text{
 	font-weight: 700;
-	color: cornflowerblue!important;
+	color: #000000;
 	line-height: 70px;
+	position: absolute;
+	left: 30px;
+	bottom: 480px;
 }
 .banner-paragraph {
 	width: 25rem;
@@ -12,18 +16,22 @@
 
 
 .registration-banner {
-	background-image: url('../../images/registration/undraw_access_account_re_8spm.svg');
+	background-image: url('../../images/registration/e-commerce-live-shopping-dashboard-sales-funnel-3.jpg');
 	background-position: center;
 	background-size:contain;
 	background-repeat: no-repeat;
-	height: 700px;
-	
+	height: 500px;
+	position: relative;
+	right: 30px;
+	top: 50px;
 }
 .input-field-info {
 	margin-left: 7rem;
 }
 .input-field-registration {
 	margin-top: 10rem;
+	position: relative;
+	bottom: 100px;
 }
 .input-field-border-radius {
 	border-radius: 10px;
@@ -46,18 +54,27 @@ input::-webkit-inner-spin-button {
 
 }
 .form-control-reg{
-	font-size: 10px;
+	font-size: 20px;
 	width:240px;
 	height: 40px;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Poppins', sans-serif;    font-style: normal;
 }
 .form-label{
     display: block;
     margin-top: 25px;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight:bold;
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Poppins', sans-serif;    font-style: normal;
+    font-weight:bolder;
     font-size: 16px;
     line-height: 21px;
+}
+
+.register-name {
+	font-family: 'Montserrat', sans-serif;
+	font-family: 'Poppins', sans-serif;
+	position: relative;
+	left: 40px;
 }
 
 .form-group{
@@ -70,10 +87,13 @@ input::-webkit-inner-spin-button {
     float:right;
     display:block;
     margin-bottom: 150px;
+	position: relative;
+	right: 80px;
 }
 .button{
     width:400px;
 	left: 100px;
+	color: #000000;
 }
 .select{
 	width:240px;
