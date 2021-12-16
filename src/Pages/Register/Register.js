@@ -73,7 +73,7 @@ class Register extends React.Component {
 						<div className='row mt-4'>
 							<div className='col registration-banner'>
 								<h2 className='banner-text'>Zoho.</h2>
-								<p className='banner-paragraph text-muted'> A central hub where teams can work, plan and achieve amazing things together </p>
+					
 							</div>
 							<div className='col'>
 
