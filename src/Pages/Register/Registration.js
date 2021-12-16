@@ -1,7 +1,7 @@
-import React,{useEffect} from 'react';
+// import React,{useEffect} from 'react';
 import './Register.css';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 import { Alert, Button} from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { db } from '../../firebase/firestore';
@@ -50,7 +50,7 @@ const Register = () => {
 				personalProfileLink:`${formik.values.Personalprofilelink}`,
 				ProductCategory:`${formik.values.ProductCategory}`,
 				WhatsappNumber:`${formik.values.WhatsappNumber}`,
-
+				verified: false
 			})
 			.then((docRef) => {
 				console.log(`${formik.values}`)
@@ -67,8 +67,9 @@ const Register = () => {
 			<section>
 				<div className='container'>
 					<div className='row mt-4'>
+						
+					    <h2 className='banner-text'>AIBA</h2>
 						<div className='col registration-banner'>
-							<h2 className='banner-text'>Zoho.</h2>
 
 						</div>
 						<div className='col'>
@@ -84,7 +85,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="fullname"
-														placeholder="Enter your name"
 
 														{...formik.getFieldProps('fullname')}
 													/>
@@ -99,7 +99,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="brandname"
-														placeholder="Enter your brandname"
 														{...formik.getFieldProps('brandname')}
 													/>
 													{formik.errors.brandname && formik.touched.brandname ?
@@ -112,7 +111,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="Personalprofilelink"
-														placeholder=" Enter your profile link"
 														{...formik.getFieldProps('Personalprofilelink')}
 													/>
 													{formik.errors.Personalprofilelink && formik.touched.Personalprofilelink ?
@@ -126,7 +124,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="Brandpagelink"
-														placeholder=" enter your Brand page link"
 														{...formik.getFieldProps('Brandpagelink')}
 													/>
 													{formik.errors.Brandpagelink && formik.touched.Brandpagelink ?
@@ -139,7 +136,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="email"
-														placeholder=" enter your email"
 														{...formik.getFieldProps('email')}
 													/>
 													{formik.errors.email && formik.touched.email ?
@@ -152,7 +148,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="Shortdescription"
-														placeholder=" some description"
 														{...formik.getFieldProps('Shortdescription')}
 													/>
 													{formik.errors.Shortdescription && formik.touched.Shortdescription ?
@@ -168,7 +163,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="Mobilenumber"
-														placeholder=" enter your mobile number"
 														{...formik.getFieldProps('Mobilenumber')}
 													/>
 													{formik.errors.Mobilenumber && formik.touched.Mobilenumber ?
@@ -181,7 +175,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="WhatsappNumber"
-														placeholder=" enter your whatsapp number"
 														{...formik.getFieldProps('WhatsappNumber')}
 													/>
 													{formik.errors.WhatsappNumber && formik.touched.WhatsappNumber ?
@@ -194,7 +187,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="Address"
-														placeholder=" enter your address"
 														{...formik.getFieldProps('Address')}
 													/>
 													{formik.errors.Address && formik.touched.Address ?
@@ -207,7 +199,6 @@ const Register = () => {
 														type="text"
 														className="form-control-reg"
 														name="GSTNumber"
-														placeholder=" GST Number"
 														{...formik.getFieldProps('GSTNumber')}
 													/>
 													{formik.errors.GSTNumber && formik.touched.GSTNumber ?
@@ -218,13 +209,11 @@ const Register = () => {
 
 													<label htmlFor="ProductCategory" className="form-label">Product Category</label>
 													<select name="ProductCategory" className="select"
-													name="ProductCategory"
-													placeholder=" eg. junior developer"
 													{...formik.getFieldProps('ProductCategory')}>
-														<option value="1">Product Category</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
+														<option value="1" className="categoryValue">Select a Category</option>
+														<option value="2" className="categoryValue">2</option>
+														<option value="3" className="categoryValue">3</option>
+														<option value="4" className="categoryValue">4</option>
 													</select>
 
 												</div>
