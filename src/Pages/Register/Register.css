@@ -50,7 +50,7 @@ input::-webkit-inner-spin-button {
 	width:240px;
 	height: 40px;
 }
-.form-label-reg{
+.form-label{
     display: block;
     margin-top: 25px;
     font-family: 'Roboto', sans-serif;
@@ -71,7 +71,7 @@ input::-webkit-inner-spin-button {
     display:block;
     margin-bottom: 150px;
 }
-.button-reg{
+.button{
     width:400px;
 	left: 100px;
 }
