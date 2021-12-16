@@ -14,9 +14,10 @@
 .registration-banner {
 	background-image: url('../../images/registration/undraw_access_account_re_8spm.svg');
 	background-position: center;
-	background-size: contain;
+	background-size:contain;
 	background-repeat: no-repeat;
 	height: 700px;
+	
 }
 .input-field-info {
 	margin-left: 7rem;
@@ -37,3 +38,81 @@ input::-webkit-inner-spin-button {
 	margin-bottom: 10px;
 
 }
+.container-registration{
+	box-shadow: 5px 5px 30px 2px grey;
+    margin-bottom: 50px;
+	width: 800px;
+	
+
+}
+.form-control-reg{
+	font-size: 10px;
+	width:240px;
+	height: 40px;
+}
+.form-label-reg{
+    display: block;
+    margin-top: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight:bold;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.form-group{
+    float:left;
+    display:inline;
+    margin-bottom: 50px;
+	padding-left: 50px;
+}
+.form-group-right{
+    float:right;
+    display:block;
+    margin-bottom: 150px;
+}
+.button-reg{
+    width:400px;
+	left: 100px;
+}
+.select{
+	width:240px;
+	height: 40px;
+}
+@media (max-width: 900px) {
+    .form-group-right{
+		padding-left: 150px;
+		
+	}
+	.container-registration{
+		/* box-shadow: 5px 5px 30px 2px grey;
+		margin-bottom: 50px; */
+		width: 700px;
+	}
+    
+    
+  }
+@media (max-width: 500px) {
+    .button{
+        position: absolute;
+        left: 10%;
+        width:250px;
+        display:block
+    }
+	.form-group-right{
+		display:block;
+		float: none;
+		padding-left: 20px;
+		margin-bottom: 50px;
+		
+	}
+	.form-group{	
+		padding-left: 20px;
+	}
+	.container-registration{		
+		width: 300px;		
+	}
+	.registration-banner {	
+		height: 400px;
+	}
+  }
