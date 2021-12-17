@@ -3,7 +3,8 @@ import './Register.css';
 import firebase from '../../firebase/firebase';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-
+import { Redirect } from "react-router-dom";
+import { db } from '../../firebase/firestore';
 class Register extends React.Component {
 	handleChange = (e) => {
 		const { name, value } = e.target
@@ -13,7 +14,9 @@ class Register extends React.Component {
 	}
 	state = {
 		stage: 1,
-		loading: 1
+		loading: 1,
+		redirect: false,
+		user:"not found"
 	}
 	configureCaptcha = () => {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
@@ -56,15 +59,40 @@ class Register extends React.Component {
 		console.log(code)
 		window.confirmationResult.confirm(code).then((result) => {
 			// User signed in successfully.
-			const user = result.user;
-			console.log(JSON.stringify(user))
-			alert("User is verified")
+			// const user = result.user;
+			// console.log(JSON.stringify(user))
+			this.setState({ redirect: true })
+			db.collection("user").where("mobileNumber", "==", this.state.mobile)
+				.get()
+				.then((querySnapshot) => {
+					querySnapshot.forEach((doc) => {
+						// doc.data() is never undefined for query doc snapshots
+						console.log(doc.id, " => ", doc.data());
+						this.setState({ user:'found' })
+
+					});
+				})
+				.catch((error) => {
+					console.log("Error getting documents: ", error);
+				});
+
 			// ...
 		}).catch((error) => {
-			console.log("error")
+			console.log(error)
 		});
 	}
 	render() {
+		const { redirect } = this.state;
+
+		if (redirect) {
+				if(this.state.user==='found'){
+					return <Redirect to={`/dashboard/${this.state.mobile}`} />;
+				}
+				else{
+					return <Redirect to={`/registration`} />;
+				}
+
+		}
 		return (
 			<div>
 				{/* header start */}
@@ -72,8 +100,13 @@ class Register extends React.Component {
 					<div className='container'>
 						<div className='row mt-4'>
 							<div className='col registration-banner'>
+<<<<<<< HEAD
 								<h2 className='banner-text'>AIBA</h2>
 					
+=======
+								<h2 className='banner-text'>Zoho.</h2>
+
+>>>>>>> c718bbd (dashboard)
 							</div>
 							<div className='col'>
 
@@ -93,7 +126,7 @@ class Register extends React.Component {
 													</div>
 													{this.state.loading === 0 ?
 
-														<Box sx={{ display: 'flex'}} className='loader'>
+														<Box sx={{ display: 'flex' }} className='loader'>
 															<CircularProgress className='loader' />
 														</Box>
 														: null

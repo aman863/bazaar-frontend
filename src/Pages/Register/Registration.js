@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 import { Alert, Button} from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { db } from '../../firebase/firestore';
-const Register = () => {
+const Register = (props) => {
 	
 	const formik = useFormik({
 		initialValues: { email: '', fullname: '', brandname: '', Personalprofilelink: '', 
@@ -54,6 +54,7 @@ const Register = () => {
 			})
 			.then((docRef) => {
 				console.log(`${formik.values}`)
+				props.history.push(`/dashboard/${formik.values.Mobilenumber}`);
 			})
 			.catch((error) => {
 				console.error("Error adding document: ", error);
