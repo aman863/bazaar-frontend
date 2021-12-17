@@ -1,16 +1,42 @@
-import React from "react";
+import React,{useState} from "react";
 import './bookings.css';
 import InfoIcon from '@mui/icons-material/Info';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-const Bookings = () => (
+import { db } from "../../firebase/firestore";
+const Bookings = (props) =>{
 
-    <>
+    const [userid, setuserid] = useState('');
+	const [verified, setVerified] = useState(false);
+
+    db.collection("user").where("mobileNumber", "==", props.match.params.id)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            // console.log(doc.id, " => ", doc.data());
+
+			setuserid(doc.data().mobileNumber)
+			if(doc.data().verified){
+				setVerified(true)
+			}
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+    
+    return(
+        
+        <>
         <div className="dashboard">
             <div className="container-dashboard">
                 <div class="row">
                     <div class="col-3 col-s-3 menu">
                         <ul>
-                            <li>Home</li>
+                            <li onClick={()=>(
+								props.history.push(`/dashboard/${userid}`)
+							)}>Home</li>
                             <li style={{ backgroundColor: "lightblue" }}>Booking</li>
                             <li>Profile</li>
                         </ul>
@@ -20,6 +46,8 @@ const Bookings = () => (
 
                         <h1>Bookings</h1>
                         <div className='center-box'>
+                        {verified ?
+                        <>
                             <div className="gap">
 
                             </div>
@@ -48,6 +76,8 @@ const Bookings = () => (
                                     <li style={{ color: "blueviolet" }}>Prime slots <InfoOutlinedIcon  /> <p>INR 254</p></li>
                                 </ul>
                             </div>
+                            </>
+                            :<h3>varification under processing</h3>}
                         </div>
                     </div>
 
@@ -69,4 +99,5 @@ const Bookings = () => (
     </>
 )
 
+} 
 export default Bookings

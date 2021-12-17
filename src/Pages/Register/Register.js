@@ -100,13 +100,8 @@ class Register extends React.Component {
 					<div className='container'>
 						<div className='row mt-4'>
 							<div className='col registration-banner'>
-<<<<<<< HEAD
 								<h2 className='banner-text'>AIBA</h2>
 					
-=======
-								<h2 className='banner-text'>Zoho.</h2>
-
->>>>>>> c718bbd (dashboard)
 							</div>
 							<div className='col'>
 
