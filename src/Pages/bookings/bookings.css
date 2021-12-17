@@ -1,0 +1,71 @@
+.gap{
+    min-height: 100px; 
+}
+#date-picker{
+    width:90%;
+    height:40px;
+    border-radius:10px;
+    margin-bottom: 50px;
+}
+.slots{
+    margin-left: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    /* background-color: aqua; */
+    display: inline-block;
+    border-radius: 10px;
+    border: solid grey 2px;
+    box-shadow: 2px 2px;
+}
+.prime-slots{
+    border-color: blueviolet;
+    color: blueviolet;
+}
+.prime-slots:hover{
+    background-color: blueviolet;
+    color: white;
+    
+}
+.premium-slots{
+    border-color: green;
+    color: green;
+}
+.premium-slots:hover{
+    background-color: green;
+    color: white;
+}
+.regular-slots:hover{
+    background-color: grey;
+    color: white;
+}
+.Bookings-container{
+    margin-bottom: 80px;
+}
+.info{
+    background-color: rgb(183, 222, 252);
+    padding-bottom: 55px;
+    padding-left: 15px;
+    padding-top: 15px;
+
+    /* block-size: fit-content */
+    
+}
+.info-ul li{
+    float:left;
+    margin-left: 50px;
+}
+li p{
+    font-size: small;
+}
+
+@media only screen and (max-width: 400px) {
+    .info-ul li{
+        float:none;
+        margin-left: 50px;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .info{  
+        padding-bottom: 120px;
+    }
+}

@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+  }
+  .dashboard{
+      background-color: aliceblue;
+      position:absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+  }
+ .container-dashboard{
+    width:90%;
+    margin-top: 2%;
+    background-color: rgb(247, 244, 244);
+    min-height: 650px;
+    border-radius: 15px;
+    margin-left: 5%;
+ }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+  
+  html {
+    font-family: "Lucida Sans", sans-serif;
+  }
+  
+  .menu{
+      
+      border-radius: 15px;
+      background-color: white;
+  }
+  .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    padding: 8px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+  }
+  
+  .menu li:hover {
+    background-color: #e5ecee;
+  }
+  
+  .aside {
+    background-color: white;
+    padding: 10px;
+    color: black;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 15px;
+    
+  }
+  .center-box{
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+  }
+  
+  
+  
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+    .menu{
+        min-height: 0;
+    }
+    .container{
+       min-height: 0;
+    }
+    .aside {
+        min-height: 0;
+      }
+      .info{
+       
+        padding-bottom: 100px;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 15%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 60%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 25%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+    .menu{
+        min-height: 650px;
+    }
+    .container-dashboard{
+       min-height: 650px;
+    }
+    .aside {
+        min-height: 650px;
+      }
+      .center-box{
+        min-height: 600px;
+      }
+  }

@@ -1,21 +1,21 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Register from './Pages/Register/Register';
 import Registration from './Pages/Register/Registration';
-
-function App() {
-  return (
-    <Router>
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Bookings from './Pages/bookings/bookings';
+const App =()=>(
+  
+    <BrowserRouter>
       <Switch>
-        <Route path="/register">
-          <Register></Register>
-        </Route>
-        <Route path="/registration">
-          <Registration></Registration>
-        </Route>
+        <Route path="/dashboard/:id" component={Dashboard}/>
+        <Route path="/bookings/:id" component={Bookings}/>
+        <Route path="/register" component={Register}/>
+        <Route path="/registration" component={Registration}/>
       </Switch>
-    </Router>
-  );
-}
+    </BrowserRouter>
+  
+)
 
 export default App;
