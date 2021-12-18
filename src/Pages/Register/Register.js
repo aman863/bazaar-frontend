@@ -62,15 +62,17 @@ class Register extends React.Component {
 			// const user = result.user;
 			// console.log(JSON.stringify(user))
 			this.setState({ redirect: true })
-			db.collection("user").where("mobileNumber", "==", this.state.mobile)
+			db.collection("user").doc(this.state.mobile)
 				.get()
 				.then((querySnapshot) => {
-					querySnapshot.forEach((doc) => {
-						// doc.data() is never undefined for query doc snapshots
-						console.log(doc.id, " => ", doc.data());
-						this.setState({ user:'found' })
+					// console.log(querySnapshot.data())
+					if(querySnapshot.data()){
+						console.log("kkkkkkk");
+						this.setState({user :"found"})
+						
+					}else{
 
-					});
+					}
 				})
 				.catch((error) => {
 					console.log("Error getting documents: ", error);
@@ -81,6 +83,7 @@ class Register extends React.Component {
 			console.log(error)
 		});
 	}
+	
 	render() {
 		const { redirect } = this.state;
 

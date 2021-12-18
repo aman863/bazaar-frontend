@@ -33,6 +33,7 @@ const Bookings = (props) =>{
             <div className="container-dashboard">
                 <div class="row">
                     <div class="col-3 col-s-3 menu">
+                    <h5 className='menu-title' >EduCare</h5>
                         <ul>
                             <li onClick={()=>(
 								props.history.push(`/dashboard/${userid}`)

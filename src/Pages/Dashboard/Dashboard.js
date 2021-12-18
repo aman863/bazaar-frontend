@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.css'
 import { db } from '../../firebase/firestore';
-
+import { Chip } from '@mui/material';
 const Dashboard = (props) => {
 	const [users, setUsers] = useState('');
 	const [userid, setuserid] = useState('');
 	const [verified, setVerified] = useState(false);
-	const [bookingsDate, setbookingsDate] = useState('')
-	const [bookingsStatus, setbookingsStatus] = useState('')
-	const [bookingsTime, setbookingsTime] = useState('')
-	const bookings=[];
+	const [booking, setbooking] = useState([]);
+
 	useEffect(() => {
 
 		db.collection("user").where("mobileNumber", "==", props.match.params.id)
@@ -37,22 +35,24 @@ const Dashboard = (props) => {
 					// setbookingsDate(doc.data().date)
 					// setbookingsStatus(doc.data().status)
 					// setbookingsTime(doc.data().time)
-					bookings.push(doc.data())
-					// console.log(bookings)
+					setbooking(prevState => [...prevState, doc.data()]);
 				});
 			})
 			.catch((error) => {
 				console.log("Error getting documents: ", error);
 			});
-	},[]);
+	}, []);
 
-
+	const uniqueArray = booking.filter(function(item, pos, self) {
+		return self.indexOf(item) == pos;
+	})
 	return (
 		<>
 			<div className="dashboard">
 				<div className="container-dashboard">
 					<div class="row">
 						<div class="col-3 col-s-3 menu">
+							<h5 className='menu-title' >EduCare</h5>
 							<ul>
 								<li style={{ backgroundColor: "lightblue" }}>Home</li>
 								<li onClick={() => (
@@ -63,14 +63,31 @@ const Dashboard = (props) => {
 						</div>
 
 						<div class="col-6 col-s-9">
-
-								{console.log(bookings)}
 							<h1>Welcome back,{`${users}`}</h1>
 							<div className='center-box'>
 								{verified ?
 									<div>
+										<table style={{width:"90%"}}>
+											
+											<tr>
+												<th>date</th>
+												<th>time</th>
+												<th>Status</th>
+											</tr>
+											
+											{uniqueArray.map(function (item, i) {
+												return(
+												<tr>
 
-									llllllllllllll
+													<td key={i}>{item.date}</td>
+													<td key={i}>{item.time}</td>
+													<td key={i}><Chip label={item.status} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
+
+												</tr>
+												)
+											})}
+
+										</table>
 									</div>
 									: <h3>varification under processing</h3>}
 							</div>
