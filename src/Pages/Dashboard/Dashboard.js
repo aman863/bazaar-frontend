@@ -5,7 +5,7 @@ import { Chip } from '@mui/material';
 const Dashboard = (props) => {
 	const [users, setUsers] = useState('');
 	const [userid, setuserid] = useState('');
-	const [verified, setVerified] = useState(false);
+	const [verified, setVerified] = useState(null);
 	const [booking, setbooking] = useState([]);
 
 	useEffect(() => {
@@ -16,10 +16,17 @@ const Dashboard = (props) => {
 			
 					// doc.data() is never undefined for query doc snapshots
 					// console.log(doc.id, " => ", doc.data());
-					setUsers(querySnapshot.data().Name.substr(0,querySnapshot.data().Name.indexOf(' ')))
+					if(querySnapshot.data().Name.indexOf(' ')===-1){
+						setUsers(querySnapshot.data().Name)
+					}else{
+						setUsers(querySnapshot.data().Name.substr(0,querySnapshot.data().Name.indexOf(' ')))
+					}
 					setuserid(props.match.params.id)
 					if (querySnapshot.data().verified) {
 						setVerified(true)
+						
+					}else{
+						setVerified(false)
 					}
 				
 			})
@@ -82,7 +89,14 @@ const Dashboard = (props) => {
 													<tr key={item.date}>
 
 													<td >{item.date}</td>
-													<td >{item.time}</td>
+													<td >{(item.time<=11) ?
+													`${item.time} :00 am`
+													:  (item.time==12)?
+													`${item.time} :00 pm`
+													: (item.time===0) ?
+														"00:00 am"
+													: `${item.time-12} :00 pm`
+												}</td>
 													<td ><Chip label={item.status.charAt(0).toUpperCase() + item.status.slice(1)} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
 
 												</tr>
@@ -92,10 +106,12 @@ const Dashboard = (props) => {
 
 										</table>
 									</div>
-									: <h4 className='verification'>varification under process</h4>}
+									: verified===null ?
+									null
+									: <p className='verification'>Your application is yet to be approved by the Admin. Please check again later :&#128516;</p>}
 							</div>
 						</div>
-
+											
 						<div class="col-9 col-s-12">
 							<div class="aside">
 								

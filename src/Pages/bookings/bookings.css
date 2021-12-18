@@ -66,9 +66,10 @@ li p{
 }
 .verification{
     position: relative;
-    left: 20%;
+    /* left: 20%; */
     margin-top: 100px;
     color: red;
+    font-size: medium;
   }
 @media only screen and (max-width: 400px) {
     .info-ul li{
