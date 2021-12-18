@@ -108,7 +108,7 @@ const Dashboard = (props) => {
 									</div>
 									: verified===null ?
 									null
-									: <p className='verification'>Your application is yet to be approved by the Admin. Please check again later :&#128516;</p>}
+									: <div className='verification'><span>Your application is yet to be approved by the Admin. Please check again later :</span>&#128516;</div>}
 							</div>
 						</div>
 											

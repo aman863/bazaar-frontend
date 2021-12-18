@@ -211,12 +211,13 @@ const Register = (props) => {
 													<label htmlFor="ProductCategory" className="form-label">Product Category</label>
 													<select name="ProductCategory" className="select"
 													{...formik.getFieldProps('ProductCategory')}>
-														<option value="1" className="categoryValue">Select a Category</option>
-														<option value="2" className="categoryValue">2</option>
-														<option value="3" className="categoryValue">3</option>
-														<option value="4" className="categoryValue">4</option>
+														<option value="0" className="categoryValue">Select a Category</option>
+														<option value="Home Decor" className="categoryValue">Home Decor</option>
+														<option value="Winter Wear" className="categoryValue">Winter Wear</option>
+														<option value="Kids Wear" className="categoryValue">Kids Wear</option>
+														<option value="Home Furnishing" className="categoryValue">Home Furnishing</option>
+														<option value="Bags" className="categoryValue">Bags</option>
 													</select>
-
 												</div>
 												<Button
 													endIcon={<ArrowForwardIcon />}
