@@ -74,18 +74,20 @@ const Dashboard = (props) => {
 												<th>time</th>
 												<th>Status</th>
 											</tr>
-											
+
+											<tbody >
 											{uniqueArray.map(function (item, i) {
 												return(
-												<tr>
+													<tr key={item.date}>
 
-													<td key={i}>{item.date}</td>
-													<td key={i}>{item.time}</td>
-													<td key={i}><Chip label={item.status} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
+													<td >{item.date}</td>
+													<td >{item.time}</td>
+													<td ><Chip label={item.status} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
 
 												</tr>
 												)
 											})}
+											</tbody>
 
 										</table>
 									</div>

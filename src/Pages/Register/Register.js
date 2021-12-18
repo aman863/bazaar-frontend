@@ -123,10 +123,11 @@ class Register extends React.Component {
 														<input name="mobile" type="number" className="form-control p-3 input-field-border-radius" id="exampleInputText1" required onChange={this.handleChange} />
 													</div>
 													{this.state.loading === 0 ?
-
-														<Box sx={{ display: 'flex' }} className='loader'>
+														
+														<Box sx={{ display: 'flex' }} className="loader" >
 															<CircularProgress className='loader' />
 														</Box>
+														
 														: null
 													}
 													<button type="submit" className="btn btn-primary p-3 w-100 input-field-border-radius">Send Otp</button>

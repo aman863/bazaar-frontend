@@ -42,9 +42,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 .loader{
-	margin-left: 100px;
-	margin-bottom: 10px;
-
+	position:relative;
+    left:22%
 }
 .container-registration{
 	box-shadow: 5px 5px 30px 2px grey;
@@ -134,5 +133,9 @@ input::-webkit-inner-spin-button {
 	}
 	.registration-banner {	
 		height: 400px;
+	}
+	.loader{
+		position:relative;
+		left:16%
 	}
   }
