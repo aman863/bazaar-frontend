@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300&display=swap');
+
 * {
     box-sizing: border-box;
+    
   }
+
+  
+body {
+	font-family: 'Montserrat', sans-serif; 
+}
   .dashboard{
       background-color: aliceblue;
       position:absolute;
@@ -30,9 +38,9 @@
     padding: 15px;
   }
   
-  html {
+  /* html {
     font-family: "Lucida Sans", sans-serif;
-  }
+  } */
   .menu-title{
     border-bottom: 2px solid grey;
     padding: 5px;
@@ -89,6 +97,12 @@
   td{
     border-radius: 10px;
     border:10px solid white;
+  }
+  .verification{
+    position: relative;
+    left: 20%;
+    margin-top: 100px;
+    color: red;
   }
   
   

@@ -8,18 +8,17 @@ const Bookings = (props) =>{
     const [userid, setuserid] = useState('');
 	const [verified, setVerified] = useState(false);
 
-    db.collection("user").where("mobileNumber", "==", props.match.params.id)
+    db.collection("user").doc(props.match.params.id)
     .get()
     .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             // console.log(doc.id, " => ", doc.data());
 
-			setuserid(doc.data().mobileNumber)
-			if(doc.data().verified){
+			setuserid(props.match.params.id)
+			if(querySnapshot.data().verified){
 				setVerified(true)
 			}
-        });
+        
     })
     .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -78,7 +77,7 @@ const Bookings = (props) =>{
                                 </ul>
                             </div>
                             </>
-                            :<h3>varification under processing</h3>}
+                            :<h4 className='verification'>varification under process</h4>}
                         </div>
                     </div>
 

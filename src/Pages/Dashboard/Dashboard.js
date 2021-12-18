@@ -10,18 +10,18 @@ const Dashboard = (props) => {
 
 	useEffect(() => {
 
-		db.collection("user").where("mobileNumber", "==", props.match.params.id)
+		db.collection("user").doc(props.match.params.id)
 			.get()
 			.then((querySnapshot) => {
-				querySnapshot.forEach((doc) => {
+			
 					// doc.data() is never undefined for query doc snapshots
 					// console.log(doc.id, " => ", doc.data());
-					setUsers(doc.data().Name)
-					setuserid(doc.data().mobileNumber)
-					if (doc.data().verified) {
+					setUsers(querySnapshot.data().Name.substr(0,querySnapshot.data().Name.indexOf(' ')))
+					setuserid(props.match.params.id)
+					if (querySnapshot.data().verified) {
 						setVerified(true)
 					}
-				});
+				
 			})
 			.catch((error) => {
 				console.log("Error getting documents: ", error);
@@ -63,15 +63,16 @@ const Dashboard = (props) => {
 						</div>
 
 						<div class="col-6 col-s-9">
-							<h1>Welcome back,{`${users}`}</h1>
+							<h2>Welcome back,</h2>
+							<h2>{`${users}`} &#128075;</h2>
 							<div className='center-box'>
 								{verified ?
 									<div>
 										<table style={{width:"90%"}}>
 											
 											<tr>
-												<th>date</th>
-												<th>time</th>
+												<th>Date</th>
+												<th>Time</th>
 												<th>Status</th>
 											</tr>
 
@@ -82,7 +83,7 @@ const Dashboard = (props) => {
 
 													<td >{item.date}</td>
 													<td >{item.time}</td>
-													<td ><Chip label={item.status} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
+													<td ><Chip label={item.status.charAt(0).toUpperCase() + item.status.slice(1)} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
 
 												</tr>
 												)
@@ -91,18 +92,13 @@ const Dashboard = (props) => {
 
 										</table>
 									</div>
-									: <h3>varification under processing</h3>}
+									: <h4 className='verification'>varification under process</h4>}
 							</div>
 						</div>
 
 						<div class="col-9 col-s-12">
 							<div class="aside">
-								<h2>What?</h2>
-								<p>Chania is a city on the island of Crete.</p>
-								<h2>Where?</h2>
-								<p>Crete is a Greek island in the Mediterranean Sea.</p>
-								<h2>How?</h2>
-								<p>You can reach Chania airport from all over Europe.</p>
+								
 							</div>
 						</div>
 					</div>
