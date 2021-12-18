@@ -6,7 +6,7 @@ import { db } from "../../firebase/firestore";
 const Bookings = (props) =>{
 
     const [userid, setuserid] = useState('');
-	const [verified, setVerified] = useState(false);
+	const [verified, setVerified] = useState(null);
 
     db.collection("user").doc(props.match.params.id)
     .get()
@@ -17,7 +17,9 @@ const Bookings = (props) =>{
 			setuserid(props.match.params.id)
 			if(querySnapshot.data().verified){
 				setVerified(true)
-			}
+			}else{
+                setVerified(false)
+            }
         
     })
     .catch((error) => {
@@ -77,7 +79,9 @@ const Bookings = (props) =>{
                                 </ul>
                             </div>
                             </>
-                            :<h4 className='verification'>varification under process</h4>}
+                            : verified===null ?
+                            null
+                            : <p className='verification'>Your application is yet to be approved by the Admin. Please check again later :&#128516;</p>}
                         </div>
                     </div>
 
