@@ -1,3 +1,10 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300&display=swap');
+
+  body {
+      font-family: 'Montserrat', sans-serif; 
+  }
+
 .gap{
     min-height: 100px; 
 }
@@ -57,7 +64,12 @@
 li p{
     font-size: small;
 }
-
+.verification{
+    position: relative;
+    left: 20%;
+    margin-top: 100px;
+    color: red;
+  }
 @media only screen and (max-width: 400px) {
     .info-ul li{
         float:none;
