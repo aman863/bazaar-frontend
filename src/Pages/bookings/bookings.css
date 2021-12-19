@@ -15,6 +15,7 @@
     margin-bottom: 50px;
 }
 .slots{
+    cursor: pointer;
     margin-left: 10px;
     margin-top: 10px;
     padding: 10px;
@@ -42,6 +43,7 @@
     color: white;
 }
 .regular-slots:hover{
+    cursor:not-allowed;
     background-color: grey;
     color: white;
 }
@@ -64,6 +66,42 @@
 li p{
     font-size: small;
 }
+
+.saveButton{
+    background-color: #e65605;
+    color:white;
+    border:1px solid #e65605;
+    border-radius: 10px;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 400ms ease-in-out;
+}
+
+.notSaveButton{
+    background-color: #e65605;
+    color:white;
+    border:1px solid #e65605;
+    border-radius: 10px;
+    width:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 400ms ease-in-out;
+}
+
+.saveButton:hover{
+    background-color:white;
+    border:1px solid #e65605;
+    color:#e65605;
+}
+
+.notSaveButton:hover{
+    cursor:not-allowed;
+    background-color:rgb(138, 138, 138);
+    border:1px solid rgb(138, 138, 138);;
+    color:white;
+}
+
 .verification{
     position: relative;
     /* left: 20%; */
