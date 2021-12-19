@@ -18,18 +18,19 @@ const Bookings = (props) =>{
   const [slotStatus,setSlotStatus] = useState('slots premium-slots')
   const [bookingSlotArray , setbookingSlotArray] = useState([]);
 
-    db.collection("user").where("mobileNumber", "==", props.match.params.id)
+    db.collection("user").doc(props.match.params.id)
     .get()
     .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             // console.log(doc.id, " => ", doc.data());
 
-			setuserid(doc.data().mobileNumber)
-			if(doc.data().verified){
+			setuserid(props.match.params.id)
+			if(querySnapshot.data().verified){
 				setVerified(true)
-			}
-        });
+			}else{
+                setVerified(false)
+            }
+        
     })
     .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -216,6 +217,7 @@ const Bookings = (props) =>{
             <div className="container-dashboard">
                 <div class="row">
                     <div class="col-3 col-s-3 menu">
+                    <h5 className='menu-title' >EduCare</h5>
                         <ul>
                             <li onClick={()=>(
 								props.history.push(`/dashboard/${userid}`)
@@ -266,7 +268,9 @@ const Bookings = (props) =>{
                               }
                             </div>
                             </>
-                            :<h3>varification under processing</h3>}
+                            : verified===null ?
+                            null
+                            : <div className='verification'><span>Your application is yet to be approved by the Admin. Please check again later :</span>&#128516;</div>}
                         </div>
                     </div>
 

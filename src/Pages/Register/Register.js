@@ -16,8 +16,10 @@ class Register extends React.Component {
 		stage: 1,
 		loading: 1,
 		redirect: false,
-		user:"not found"
+		user: "not found"
 	}
+
+
 	configureCaptcha = () => {
 		window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
 			'size': 'invisible',
@@ -52,6 +54,20 @@ class Register extends React.Component {
 				// ...
 				console.log(error)
 			});
+		db.collection("user").doc(this.state.mobile)
+			.get()
+			.then((querySnapshot) => {
+				// console.log(querySnapshot.data())
+				if (querySnapshot.data()) {
+					this.setState({ user: "found" })
+
+				} else {
+
+				}
+			})
+			.catch((error) => {
+				console.log("Error getting documents: ", error);
+			});
 	}
 	onSubmitOTP = (e) => {
 		e.preventDefault()
@@ -59,38 +75,24 @@ class Register extends React.Component {
 		console.log(code)
 		window.confirmationResult.confirm(code).then((result) => {
 			// User signed in successfully.
-			// const user = result.user;
-			// console.log(JSON.stringify(user))
+
 			this.setState({ redirect: true })
-			db.collection("user").where("mobileNumber", "==", this.state.mobile)
-				.get()
-				.then((querySnapshot) => {
-					querySnapshot.forEach((doc) => {
-						// doc.data() is never undefined for query doc snapshots
-						console.log(doc.id, " => ", doc.data());
-						this.setState({ user:'found' })
 
-					});
-				})
-				.catch((error) => {
-					console.log("Error getting documents: ", error);
-				});
-
-			// ...
 		}).catch((error) => {
 			console.log(error)
 		});
 	}
+
 	render() {
 		const { redirect } = this.state;
 
 		if (redirect) {
-				if(this.state.user==='found'){
-					return <Redirect to={`/dashboard/${this.state.mobile}`} />;
-				}
-				else{
-					return <Redirect to={`/registration`} />;
-				}
+			if (this.state.user === 'found') {
+				return <Redirect to={`/dashboard/${this.state.mobile}`} />;
+			}
+			else {
+				return <Redirect to={`/registration`} />;
+			}
 
 		}
 		return (
@@ -101,7 +103,7 @@ class Register extends React.Component {
 						<div className='row mt-4'>
 							<div className='col registration-banner'>
 								<h2 className='banner-text'>AIBA</h2>
-					
+
 							</div>
 							<div className='col'>
 
@@ -121,9 +123,10 @@ class Register extends React.Component {
 													</div>
 													{this.state.loading === 0 ?
 
-														<Box sx={{ display: 'flex' }} className='loader'>
+														<Box sx={{ display: 'flex' }} className="loader" >
 															<CircularProgress className='loader' />
 														</Box>
+
 														: null
 													}
 													<button type="submit" className="btn btn-primary p-3 w-100 input-field-border-radius">Send Otp</button>

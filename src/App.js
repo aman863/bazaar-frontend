@@ -11,8 +11,8 @@ const App =()=>(
       <Switch>
         <Route path="/dashboard/:id" component={Dashboard}/>
         <Route path="/bookings/:id" component={Bookings}/>
-        <Route path="/register" component={Register}/>
         <Route path="/registration" component={Registration}/>
+        <Route path="/" component={Register}/>
       </Switch>
     </BrowserRouter>
   
