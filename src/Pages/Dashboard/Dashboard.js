@@ -59,7 +59,7 @@ const Dashboard = (props) => {
 				<div className="container-dashboard">
 					<div class="row">
 						<div class="col-3 col-s-3 menu">
-							<h5 className='menu-title' >EduCare</h5>
+							<h5 className='menu-title' >AIBA</h5>
 							<ul>
 								<li style={{ backgroundColor: "lightblue" }}>Home</li>
 								<li onClick={() => (
