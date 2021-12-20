@@ -110,9 +110,25 @@ body {
     color: red;
     font-weight: bold;
   }
-  
-  
-  
+  .avatar_container{
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    padding-bottom: 0;
+    font-size: medium;
+    text-align: center;
+    
+  }
+  .avatar{
+    position: relative;
+    left:40%
+  }
+  .calender{
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px 2px grey;
+  }
+
   /* For mobile phones: */
   [class*="col-"] {
     width: 100%;
@@ -145,6 +161,13 @@ body {
        
         padding-bottom: 100px;
     }
+    .avatar{
+      position: relative;
+      left:45%
+    }
+    .calender{
+      min-width:100%;
+    }
   }
   @media only screen and (min-width: 768px) {
     /* For desktop: */
@@ -171,5 +194,9 @@ body {
       }
       .center-box{
         min-height: 600px;
+      }
+      .avatar{
+        position: relative;
+        left:40%
       }
   }
