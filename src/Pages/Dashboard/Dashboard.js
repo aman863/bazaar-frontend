@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css'
 import { db } from '../../firebase/firestore';
 import { Chip } from '@mui/material';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { Avatar } from '@mui/material';
+import { deepPurple } from '@mui/material/colors'
+
 const Dashboard = (props) => {
 	const [users, setUsers] = useState('');
+	const [userName, setUserName] = useState('');
 	const [userid, setuserid] = useState('');
 	const [verified, setVerified] = useState(null);
 	const [booking, setbooking] = useState([]);
@@ -13,22 +19,23 @@ const Dashboard = (props) => {
 		db.collection("user").doc(props.match.params.id)
 			.get()
 			.then((querySnapshot) => {
-			
-					// doc.data() is never undefined for query doc snapshots
-					// console.log(doc.id, " => ", doc.data());
-					if(querySnapshot.data().Name.indexOf(' ')===-1){
-						setUsers(querySnapshot.data().Name)
-					}else{
-						setUsers(querySnapshot.data().Name.substr(0,querySnapshot.data().Name.indexOf(' ')))
-					}
-					setuserid(props.match.params.id)
-					if (querySnapshot.data().verified) {
-						setVerified(true)
-						
-					}else{
-						setVerified(false)
-					}
-				
+
+				// doc.data() is never undefined for query doc snapshots
+				// console.log(doc.id, " => ", doc.data());
+				if (querySnapshot.data().Name.indexOf(' ') === -1) {
+					setUsers(querySnapshot.data().Name)
+				} else {
+					setUsers(querySnapshot.data().Name.substr(0, querySnapshot.data().Name.indexOf(' ')))
+					setUserName(querySnapshot.data().Name)
+				}
+				setuserid(props.match.params.id)
+				if (querySnapshot.data().verified) {
+					setVerified(true)
+
+				} else {
+					setVerified(false)
+				}
+
 			})
 			.catch((error) => {
 				console.log("Error getting documents: ", error);
@@ -50,7 +57,7 @@ const Dashboard = (props) => {
 			});
 	}, []);
 
-	const uniqueArray = booking.filter(function(item, pos, self) {
+	const uniqueArray = booking.filter(function (item, pos, self) {
 		return self.indexOf(item) == pos;
 	})
 	return (
@@ -75,8 +82,8 @@ const Dashboard = (props) => {
 							<div className='center-box'>
 								{verified ?
 									<div>
-										<table style={{width:"90%"}}>
-											
+										<table style={{ width: "90%" }}>
+
 											<tr>
 												<th>Date</th>
 												<th>Time</th>
@@ -84,37 +91,45 @@ const Dashboard = (props) => {
 											</tr>
 
 											<tbody >
-											{uniqueArray.map(function (item, i) {
-												return(
-													<tr key={item.date}>
+												{uniqueArray.map(function (item, i) {
+													return (
+														<tr key={item.date}>
 
-													<td >{item.date}</td>
-													<td >{(item.time<=11) ?
-													`${item.time} :00 am`
-													:  (item.time==12)?
-													`${item.time} :00 pm`
-													: (item.time===0) ?
-														"00:00 am"
-													: `${item.time-12} :00 pm`
-												}</td>
-													<td ><Chip label={item.status.charAt(0).toUpperCase() + item.status.slice(1)} variant="outlined" color={item.status==="active"?"success":"warning"} /></td>
+															<td >{item.date}</td>
+															<td >{(item.time <= 11) ?
+																`${item.time} :00 am`
+																: (item.time == 12) ?
+																	`${item.time} :00 pm`
+																	: (item.time === 0) ?
+																		"00:00 am"
+																		: `${item.time - 12} :00 pm`
+															}</td>
+															<td ><Chip label={item.status.charAt(0).toUpperCase() + item.status.slice(1)} variant="outlined" color={item.status === "active" ? "success" : "warning"} /></td>
 
-												</tr>
-												)
-											})}
+														</tr>
+													)
+												})}
 											</tbody>
 
 										</table>
 									</div>
-									: verified===null ?
-									null
-									: <div className='verification'><span>Your application is yet to be approved by the Admin. Please check again later :</span>&#128516;</div>}
+									: verified === null ?
+										null
+										: <div className='verification'><span>Your application is yet to be approved by the Admin. Please check again later :</span>&#128516;</div>}
 							</div>
 						</div>
-											
+
 						<div class="col-9 col-s-12">
 							<div class="aside">
-								
+								<div className='avatar_container'>
+								<Avatar
+								className='avatar'
+								 sx={{ bgcolor: deepPurple[400] ,width: 56, height: 56  }}
+								>{userName.substr(0,1)}</Avatar>	
+								<p>{userName}</p>							
+								</div>
+								<Calendar className="calender"
+								/>
 							</div>
 						</div>
 					</div>
@@ -127,3 +142,4 @@ const Dashboard = (props) => {
 };
 
 export default Dashboard;
+
